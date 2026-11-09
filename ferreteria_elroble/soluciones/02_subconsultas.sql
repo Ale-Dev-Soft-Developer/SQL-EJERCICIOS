@@ -18,15 +18,13 @@ SELECT
 producto.nombre AS nombre_producto,
 categoria.nombre AS nombre_categoria,
 proveedor.razon_social AS nombre_proveedor,
-venta.total AS total_vendido
-FROM t_venta AS venta
-INNER JOIN t_producto AS producto
-	ON venta.producto_id = producto.id
+producto.precio AS precio
+FROM t_producto AS producto
 INNER JOIN t_categoria AS categoria
 	ON producto.categoria_id = categoria.id
 INNER JOIN t_proveedor AS proveedor 
 	ON producto.proveedor_id = proveedor.id
-WHERE proveedor.activo = 1 AND venta.total > 10000
-ORDER BY venta.total ASC;
+WHERE proveedor.activo = 1 AND producto.precio > 10000
+ORDER BY producto.precio ASC;
 
 -- Ejercicio 3: Resumen por categoría — `AVG()`
